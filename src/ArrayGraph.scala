@@ -1,4 +1,4 @@
-package lab11.src
+package src
 
 class ArrayGraph(graph: Array[Any]) {
 
