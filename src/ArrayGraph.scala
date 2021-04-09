@@ -7,12 +7,47 @@ class ArrayGraph(graph: Array[Any]) {
 
   //TODO: Fill out this method!
   def isValid(): Boolean = {
-    false
+    for (element <- graph) {
+      element match {
+        case e: String =>
+        case e: Int =>
+          if (graph.length > e) {
+            graph(e) match {
+              case e: Int    => return false
+              case b: String =>
+              case _         => return false
+            }
+          } else {
+            return false
+          }
+        case _ => return false
+      }
+    }
+    true
   }
 
   //TODO: Fill out this method!
   def markGraph(start: Int): Set[Int] = {
-    Set(1)
+    if (!this.isValid || start >= graph.length) {
+      throw new IllegalArgumentException()
+    }
+    graph(start) match {
+      case e: Int    => throw new IllegalArgumentException()
+      case e: String =>
+    }
+    var check = List(graph(start))
+    val visited = scala.collection.mutable.ListBuffer[Int]()
+    while (!check.isEmpty) {
+      val next = check.head
+      check = check.tail
+      val plusIndex = 0
+        visited += start + plusIndex
+
+          if (!visited.contains(newNode))
+            check = newNode :: check
+      }
+    }
+    false
   }
 
   //TODO: Fill out this method!
@@ -25,8 +60,8 @@ class ArrayGraph(graph: Array[Any]) {
     var output = ""
     for (item <- graph) {
       item match {
-        case vertex : String => output += (vertex + "\n")
-        case edge : Int => output += (" => " + graph(edge) + "\n")
+        case vertex: String => output += (vertex + "\n")
+        case edge: Int      => output += (" => " + graph(edge) + "\n")
       }
     }
     output
